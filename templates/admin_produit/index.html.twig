@@ -1,0 +1,61 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    
+            <div class="row mx-5 py-3">
+            <div class="d-flex justify-content-between align-items-center">
+        <h1>Liste de produits</h1>
+
+        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Sous-titre</th>
+                <th>ImageName</th>
+                <th>Prix</th>
+            {# <th>Description</th> #}
+                <th>Mise à jour</th>
+                 <th>isBest</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+        
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.subtitle }}</td>
+                <td><img src="{{asset('images/produits/' ~ produit.imageName)}}" alt="{{ produit.nom }}" class="img-list-admin"></td>    
+                
+                {# <td>{{ produit.description }}</td> #}
+                <td>{{ (produit.prix / 100)|number_format(2, ',', '.')}} €</td>
+                <td>{{ produit.updatedAt ? produit.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ produit.isBest ? 'Yes' : 'No' }}</td>
+
+
+                {# <td>{{ produit.slug }}</td> #}
+                <td>
+                    <a href="{{ path('admin_produit_show', {'id': produit.id}) }}">show</a>
+                    <a href="{{ path('admin_produit_edit', {'id': produit.id}) }}">edit</a>
+                </td>
+                
+            </tr>
+ 
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+<a href="{{ path('admin_produit_new') }}" class="btn btn-dark btn-sm col-md-2">Ajouter</a>
+</div>
+
+{% endblock %}

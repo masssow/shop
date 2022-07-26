@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Safar beauty - Ajouter adresse{% endblock %}
+
+{% block body %}
+<h1 class=" text-center my-4">Ajouter une adressee</h1>
+
+<a href="{{ path('compte_adresse_add')}} " class="btn btn-outline-dark btn-sm  float-end my-2 me-5">Retour</a></br>
+
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">{{ form_row(form.prenom)}}</div> 
+        <div class="col-md-6">{{ form_row(form.nom)}}</div>
+        
+        <div class="col-md-6">{{ form_row(form.adress)}}</div>
+        <div class="col-md-6">{{ form_row(form.postal)}}</div>
+        <div class="col-md-6">{{ form_row(form.ville)}}</div>   
+        <div class="col-md-6">{{ form_row(form.country)}}</div> 
+        <div class="col-md-6">{{ form_row(form.phone)}}</div>   
+  </div>
+    
+    
+    {{ form_end(form) }}
+
+ 
+<button class="btn btn-outline-success btn-sm d-grid gap-2 col-2 mx-auto my-3">{{button_label|default ('enregistrer')}}</button>
+  
+  
+{% endblock %}

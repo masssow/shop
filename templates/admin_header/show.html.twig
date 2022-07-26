@@ -1,0 +1,38 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Header{% endblock %}
+
+{% block body %}
+    <h1>Header</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ header.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ header.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ header.contenu }}</td>
+            </tr>
+            <tr>
+                <th>BtnTitle</th>
+                <td>{{ header.btnTitle }}</td>
+            </tr>
+            <tr>
+                <th>BtnUrl</th>
+                <td>{{ header.btnUrl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_header_index') }}">back to list</a>
+
+    <a href="{{ path('admin_header_edit', {'id': header.id}) }}">edit</a>
+
+    {{ include('admin_header/_delete_form.html.twig') }}
+{% endblock %}

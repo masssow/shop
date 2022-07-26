@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - Safar beauty{% endblock %}
+
+{% block body %}
+
+<a href="{{ path ('compte_adresse_add')}}" class="btn btn-outline-info btn-sm float-end my-5 me-5">Ajouter une adresse</a>
+<h1 class="text-center my-4">Gèrer mes adresses</h1>
+     {# {{dump(app.user)}} #}
+       
+       
+{% if app.user.adresses|length == 0 %}
+    <p class="text-center">
+        Vous n'avez encore ajouté d'addresse de livraison dans votre compte. Pour en ajouter veuillez <a href="{{ path ('compte_adresse_add')}}" class="">cliquer ici</a>
+    </p>
+{% else %}
+
+
+    <div class="row">
+        {% for adress in app.user.adresses %}
+       
+        <div class="col-md-4 d-flex justify-content-center ms-3 mt-3 mb-5">
+        <div class="card">
+        <div class="card-body">
+        <h5 class="card-title text-center">{{adress.nom}}</h5>
+        <p class="card-text text-center">{{ adress.adress }}, <br>
+            {{adress.postal}} - {{adress.ville}} - {{adress.country}}</p>
+            <div class ="adr-bt mx-3 text-center">
+        <a href="{{ path('compte_adresse_edit', { 'id' : adress.id}) }}"><i class="fas fa-pencil-alt"></i></a> | <a href="{{ path('compte_adresse_delete', { 'id' : adress.id}) }}"><i class="fas fa-trash-alt"></i></a>
+            </div>
+         </div>
+     </div>
+</div>
+        
+    
+    {% endfor %}
+</div>
+{% endif %}
+
+<a class="btn btn-outline-dark btn-sm  d-grid gap-2 col-2 mx-auto" href="{{ path('mon_compte')}}">Retour</a></br>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Safar beauty - Nos categories{% endblock %}
+
+{% block body %}
+
+<div class="row">
+<div class="col-12 col-md-4 d-flex justify-content-center mt-2 mb-3">
+<img src="{{ asset('images/categories/' ~ categorie.imageName )}}" alt="{{categorie.nom}}" class="img-fluid mt-3">
+</div>
+<div class="row col-12 col-md-8 d-flex align-self-center">
+<h1 class="text-center">{{categorie.Nom}}</h1>
+{# <span class="text-center">{{ p.description|raw}}</span> #}
+</div>
+<div class="row d-flex justify-content-center">
+{# <span class="produits-prix d-block text-center ">{{ (produit.prix / 100)|number_format(2, ',', '.')}} €</span> #}
+    {# <a href="{{path('add_to_cart', { 'id' : produit.id})}}" class="btn btn-outline-danger col-6">Ajouter au panier</a> #}
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

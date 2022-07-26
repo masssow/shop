@@ -1,0 +1,43 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Header index{% endblock %}
+
+{% block body %}
+    <h1>Header index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>BtnTitle</th>
+                <th>BtnUrl</th>
+                <th>actions</th>
+                <th>imageName</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for header in headers %}
+            <tr>
+                <td>{{ header.id }}</td>
+                <td>{{ header.titre }}</td>
+                <td>{{ header.contenu }}</td>
+                <td>{{ header.btnTitle }}</td>
+                <td>{{ header.btnUrl }}</td>
+                <td><img src="{{ asset('images/headers/' ~ header.imageName)}}"  alt="{{ header.titre}}" class="img-list-admin"></td>    
+                <td>
+                    <a href="{{ path('admin_header_show', {'id': header.id}) }}">show</a>
+                    <a href="{{ path('admin_header_edit', {'id': header.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_header_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block body %}
+    <h1>Géstion de commandes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Crée le</th>
+                <th>Transport.</th>
+                <th>Prix Transport.</th>
+                <th>Payer</th>
+                <th>Livré à</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande.carrierNom }}</td>
+                <td>{{ (commande.carrierPrix )|number_format(2, ',', '.')}} €</td>
+                <td>{{ commande.isPaid ? 'Yes' : 'No' }}</td>
+                <td>{{ commande.delivery|raw }}</td>
+                <td>
+                    <a href="{{ path('admin_commande_show', {'id': commande.id}) }}">show</a>
+                    <a href="{{ path('admin_commande_edit', {'id': commande.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_commande_new') }}">Create new</a>
+{% endblock %}

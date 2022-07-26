@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Safar beauty - Mon compte{% endblock %}
+
+{% block body %}
+<h3 class="my-4">Mon compte</h3>
+Bienvenue <strong>{{ app.user.prenom }}</strong> dans votre compte
+    <hr>
+    - <a href="{{ path('compte_password')}}">Modifier mon mot de passe</a></br>
+    - <a href="{{ path('compte_adresse')}}">Gérer mes adresse</a></br>
+    {# - <a href="{{ path('compte_commande')}}">Historiques de commandes</a></br> #}
+
+
+   
+    <hr>
+{% endblock %}

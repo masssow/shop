@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Safar beauty - Accueil
+  
+{% endblock %}
+{% block carousel %}{% endblock %}
+{% block body %}
+
+  <div class="container marketing">
+    <div class="row">
+      {% for produits in produits %}
+
+    <div class="col-lg-4">
+      <div class="produit-item text-center bordure1 ">
+          <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}">
+              <img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}" class="img-fluid">
+          </a>
+              <h6>{{ produits.nom }}</h6>
+              <span class="produits.subtitle">
+                {{ produits.subtitle }}
+              </span>
+                  <span class="produits-prix">
+                  {{ (produits.prix / 100)|number_format(2, ',', '.') }} €
+                  </span>
+            <a href="{{ path('add_to_cart', { 'id' : produits.id}) }}" class="btn btn-outline-danger">
+                Ajouter au panier
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+              Safar beauty  
+              <span class="text-muted">
+                entièrement pour vous
+              </span>
+            </h2>
+            <p class="lead">
+              Fusce gravida elit nec nulla feugiat scelerisque. Nullam pulvinar congue justo, eu sagittis velit euismod nec.
+            </p>
+          </div>
+          <div class="col-md-5">
+            <img src="{{ asset('images/image-event.jpg') }}" alt="" class="img-fluid"></div>
+          </div>
+
+          <hr class="featurette-divider">
+
+            <div class="row featurette">
+              <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">
+                  Les partenaires de votre peau 
+                  <span class="text-muted">
+                    Produits de beauté 100% naturels.
+                  </span>
+                </h2>
+                <p class="lead">
+                  Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum..
+                </p>
+              </div>
+              <div class="col-md-5 order-md-1">
+                <img src="{{ asset('images/presentation-beaute.jpg') }}" alt="" class="img-fluid"></div>
+              </div>
+
+              <hr class="featurette-divider">
+
+                <div class="row featurette">
+                  <div class="col-md-7">
+                    <h2 class="featurette-heading">
+                      rencontrer notre couturière
+                      <span class="text-muted">
+                        Jira
+                      </span>
+                    </h2>
+                    <p class="lead">
+                      Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum.
+                    </p>
+                  </div>
+                  <div class="col-md-5">
+                    <img src="{{ asset('images/pexels-ron-lach-9849636.jpg') }}" alt="" class="img-fluid"></div>
+                  </div>
+
+                  <hr class="featurette-divider"></div>
+
+                {% endblock %}
+                

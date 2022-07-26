@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement de ma commande - Safar beauty{% endblock %}
+
+{% block body %}
+<h1 class="text-center my-4">Mon récapitulatif</h1>
+    <p> Veuillez vérifiez vous informations avant de payer votre commande.</p>
+        <hr>
+            <div class="row">
+            <div class="col-md-12">
+           <b>Mon adresse de livraison:</b><br>
+                {{ delivery|raw }} <br>
+                
+               <b>Mon transporteur:</b> <br>
+                 
+                    {{ carrier.nom|raw}}
+                    {{ carrier.description|raw}}
+                    {{ carrier.prix|number_format(2, ',', '.')}}
+
+                <div class="col-md-12">
+                <p>récapitulatif de votre commande:</p>
+                    {% set total = null %}
+                    {% for produit in cart %}
+                    <div class="row">
+                    <div class="col-2 my-2">
+                    <img src="/images/produits/{{produit.produit.imageName}}" height="75px" alt="{{ produit.produit.nom }}" class="">
+                    </div>
+                    <div class="col-8 text-center my-auto">
+                    {{ produit.produit.nom }}
+                     <br>
+                        x {{ produit.quantity }}
+                    </div>
+                    <div class="col-2 my-auto">
+                <td>{{ ((produit.produit.prix * produit.quantity) / 100)|number_format(2, ',', '.')}} €</td>
+
+                    </div>
+                </div>
+                {% set total = total + (produit.produit.prix * produit.quantity) %}
+
+                {% endfor %}
+            </div> 
+
+                <div class="float-end">
+                <strong>Sous-Total: </strong> {{ (total/ 100)|number_format(2, ',', '.')}} € <br>
+                <strong>Livraison : </strong> {{ (carrier.Prix)|number_format(2, ',', '.')}} € <br>
+                <strong>Total :</strong> {{ ((total/ 100) + carrier.prix )|number_format(2, ',', '.')}}
+                </div>
+          
+        <form action="/checkout" method="POST">
+            <button type="submit" class="btn btn-success d-grid gap-2 col-6 mx-auto">Payer | {{ ((total / 100) + carrier.prix) | number_format(2, ',', '.') }} €</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Transporteurs{% endblock %}
+
+{% block body %}
+    <h1>Transporteurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th class="text-center">Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carrier in carriers %}
+            <tr>
+                <td class="text-center">{{ carrier.id }}</td>
+                <td class="text-center">{{ carrier.Nom|raw }}</td>
+                <td>{{ carrier.description}}</td>
+                <td>{{ (carrier.prix)|number_format(2, ',', ',')}} €</td>
+
+                <td>
+                    <a href="{{ path('admin_carrier_show', {'id': carrier.id}) }}">show</a>
+                    <a href="{{ path('admin_carrier_edit', {'id': carrier.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_carrier_new') }}">Create new</a>
+{% endblock %}

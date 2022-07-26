@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes - Safar beauty{% endblock %}
+
+{% block body %}
+<h1 class="text-center my-4">Mes commandes</h1>
+    {{dump()}}
+       
+       
+{% if app.user.commandes|length == 0 %}
+    <p class="text-center">
+        Vous n'avez encore passé de commandes.
+    </p>
+{% else %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Produit</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix unitaire</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for commande in app.user.commandes %}
+    <tr>
+    <td></td>
+    <td>{{ commande.quantity}}</td>
+    <td>{{ (commande.prix / 100)|number_format(2, ',', '.') }}
+    €</td>
+    <td>{{ (total / 100)|number_format(2, ',', '.') }} €</td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+    
+{% endif %}
+{% endblock %}

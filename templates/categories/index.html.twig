@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Safar beauty - Nos categories{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">
+        Categories des nos produits
+    </h1>
+    <div class="row">
+        {% for categorie in categories %}
+            <div class="col-md-3">
+                <a href="{{ path('categorie-detail', { 'slug' : categorie.id} ) }}">
+                    <img src="{{ asset('images/categories/' ~ categorie.imageName) }}" alt="{{ categorie.Nom }}" class="categorie-item img-fluid">
+                        <h3 class="categorie-nom my-2">
+                            {{ categorie.nom }}
+                        </h3>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endblock %}
+    

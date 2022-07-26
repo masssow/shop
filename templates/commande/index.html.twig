@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande - Safar beauty{% endblock %}
+
+{% block body %}
+<div class="row">
+<h1 class="text-center my-4">Gérer votre commande</h1>
+    <p>Veuillez vérifier vos préferences avant de valider votre commande</p>
+        
+            <div class="row">
+            <div class="col-md-6">               {{ form_start(form, {action:path('commande_recap')}) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>  
+                <div class="col-md-6">
+                <b>Récapitulatif de ma commande</b>
+                    {% for produit in cart %}
+                    <div class="row">
+                    <div class="col py-2"><img src="images/produits/{{produit.produit.imageName}}" height="50px" alt="{{ produit.produit.nom }}" class=""></div>
+                    <div class="col-8 text-center my-auto">
+                    {{ produit.produit.nom }}
+                    </div>
+                    <div class="col my-auto">x {{ produit.quantity }}</div>
+                </div>
+                {% endfor %}
+                </div> 
+            </div>
+        </div>
+{% endblock %}

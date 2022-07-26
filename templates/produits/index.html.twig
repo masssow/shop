@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Safar beauty - Nos produits
+    
+{% endblock %}
+
+{% block body %}
+
+    <div class="row ">
+        {# BARRE DE RECHERCHE #}
+        <div class="form-group d-flex justify-content-center col-form-label  mt-4">
+            <form action="{{ path('produit-search') }}" method="get" class="d-flex">
+                <input type="text" name="search-value" id="" class="form-control">
+                    <button type="submit" class="btn btn-dark btn-sm align-self-center mx-3">
+                        Rechercher
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr>
+            <div class="container mb-5">
+                <h1>
+                    Découvrez notre large gamme des produits                 
+                            
+                </h1>
+                <div class="row">
+                    {% for produits in produits %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="produit-item  bordure1 ">
+                                <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}">
+                                    <img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}" class="img-fluid mx-auto d-block">
+                                </a>
+                                    <h6>
+                                        {{ produits.nom }}
+                                    </h6>
+                                    <span class="produits-subtitle">
+                                        {{ produits.subtitle }}
+                                    </span>
+                                    <span class="produits-prix">{{ (produits.prix / 100)|number_format(2, ',', '.') }} €
+                                    </span>
+                                    <a href="{{ path('add_to_cart', { 'id' : produits.id}) }}" class="btn btn-sm btn-outline-danger mt-2 mb-3 d-flex justify-content-center">
+                                        Ajouter au panier
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                            <div class="d-flex justify-content-center my-4">
+                                {{ knp_pagination_render(produits) }}
+                                </div>
+                                    </div>
+                                        </div>
+        {% endblock %}
+        
