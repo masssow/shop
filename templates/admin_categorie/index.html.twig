@@ -9,7 +9,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Nom</th>
                 <th>ImageName</th>
                 <th>UpdatedAt</th>
@@ -20,7 +20,7 @@
         <tbody>
         {% for categorie in categories %}
             <tr>
-                <td>{{ categorie.id }}</td>
+                {# <td>{{ categorie.id }}</td> #}
                 <td>{{ categorie.Nom }}</td>
                 <td><img src="{{asset('images/categories/' ~ categorie.imageName)}}" alt="{{ categorie.nom }}" class="img-list-admin"></td>    
                 {# <td>{{ categorie.imageName }}</td> #}

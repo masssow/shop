@@ -66,7 +66,6 @@ class Categorie
         return $this->getNom().$this->getImageName();
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -119,7 +118,6 @@ class Categorie
 
         return $this;
     }
-
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -175,5 +173,4 @@ class Categorie
 
         return $this;
     }
-   
 }

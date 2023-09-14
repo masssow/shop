@@ -20,7 +20,7 @@
             <tr>
                 <td class="text-center">{{ carrier.id }}</td>
                 <td class="text-center">{{ carrier.Nom|raw }}</td>
-                <td>{{ carrier.description}}</td>
+                <td>{{ carrier.description|raw }}</td>
                 <td>{{ (carrier.prix)|number_format(2, ',', ',')}} €</td>
 
                 <td>

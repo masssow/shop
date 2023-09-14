@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\File\File;
@@ -76,14 +78,19 @@ class Produit
     private $subtitle;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Carousel::class, inversedBy="imageProduit")
-     */
-    private $carousel;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $isBest;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="produitList")
+     */
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     
     public function getId(): ?int
@@ -223,18 +230,6 @@ class Produit
         return $this;
     }
 
-    public function getCarousel(): ?Carousel
-    {
-        return $this->carousel;
-    }
-
-    public function setCarousel(?Carousel $carousel): self
-    {
-        $this->carousel = $carousel;
-
-        return $this;
-    }
-
     public function getIsBest(): ?bool
     {
         return $this->isBest;
@@ -243,6 +238,33 @@ class Produit
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addProduitList($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeProduitList($this);
+        }
 
         return $this;
     }

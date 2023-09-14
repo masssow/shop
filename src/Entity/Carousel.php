@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CarouselRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CarouselRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=CarouselRepository::class)
+ *  @Vich\Uploadable
  */
 class Carousel
 {
@@ -18,11 +20,6 @@ class Carousel
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="carousel")
-     */
-    private $imageProduit;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -39,44 +36,34 @@ class Carousel
      */
     private $updatedAt;
 
-    public function __construct()
-    {
-        $this->imageProduit = new ArrayCollection();
-    }
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="carousel", fileNameProperty="imageName", size="imageSize")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $subtitle;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $buttom;
+
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|Produit[]
-     */
-    public function getImageProduit(): Collection
-    {
-        return $this->imageProduit;
-    }
-
-    public function addImageProduit(Produit $imageProduit): self
-    {
-        if (!$this->imageProduit->contains($imageProduit)) {
-            $this->imageProduit[] = $imageProduit;
-            $imageProduit->setCarousel($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImageProduit(Produit $imageProduit): self
-    {
-        if ($this->imageProduit->removeElement($imageProduit)) {
-            // set the owning side to null (unless already changed)
-            if ($imageProduit->getCarousel() === $this) {
-                $imageProduit->setCarousel(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getImageName(): ?string
@@ -114,4 +101,66 @@ class Carousel
 
         return $this;
     }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(?string $subtitle): self
+    {
+        $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    public function getButtom(): ?string
+    {
+        return $this->buttom;
+    }
+
+    public function setButtom(?string $buttom): self
+    {
+        $this->buttom = $buttom;
+
+        return $this;
+    }
+
 }

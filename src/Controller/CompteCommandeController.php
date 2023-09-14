@@ -24,13 +24,8 @@ class CompteCommandeController extends AbstractController
     public function index(): Response
     {
         $commandes = $this->entityManager->getRepository(Commande::class)->findSuccessOrders($this->getUser());
-<<<<<<< HEAD
         // dd($commandes);
-    
-=======
-        dd($commandes);
-           
->>>>>>> dc6b251889921c16bd6863b60ca6ce4cb576207a
+
         return $this->render('mon_compte/commandes.html.twig', [
             'commandes' => $commandes
         ]);

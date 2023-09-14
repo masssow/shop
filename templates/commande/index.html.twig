@@ -3,27 +3,49 @@
 {% block title %}Valider ma commande - Safar beauty{% endblock %}
 
 {% block body %}
-<div class="row">
-<h1 class="text-center my-4">Gérer votre commande</h1>
-    <p>Veuillez vérifier vos préferences avant de valider votre commande</p>
-        
-            <div class="row">
-            <div class="col-md-6">               {{ form_start(form, {action:path('commande_recap')}) }}
-                {{ form_widget(form) }}
-                {{ form_end(form) }}
-            </div>  
-                <div class="col-md-6">
-                <b>Récapitulatif de ma commande</b>
-                    {% for produit in cart %}
-                    <div class="row">
-                    <div class="col py-2"><img src="images/produits/{{produit.produit.imageName}}" height="50px" alt="{{ produit.produit.nom }}" class=""></div>
-                    <div class="col-8 text-center my-auto">
-                    {{ produit.produit.nom }}
-                    </div>
-                    <div class="col my-auto">x {{ produit.quantity }}</div>
-                </div>
-                {% endfor %}
-                </div> 
-            </div>
-        </div>
+ <div class="shopping-method">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="shipping-in">
+                            <h5>Gérer votre commande</h5>
+                            <p>Veuillez vérifier vos préferences avant de valider votre commande</p>
+                            <div>
+                                <div class="cs-item">
+                                        {{ form_start(form, {action:path('commande_recap')}) }}
+                                        {{ form_widget(form) }}
+                                </div>
+                            </div>
+                                
+                        </div> 
+                        <div class="total-info">
+                            <div class="total-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Total Achat</th>
+                                            <th>Subtotal</th>
+                                            <th>Frais de port</th>
+                                            <th class="total-cart">Total Panier</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="total">$29</td>
+                                            <td class="sub-total">$29</td>
+                                            <td class="shipping">$10</td>
+                                            <td class="total-cart-p">$39</td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
+                            </div> 
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <a href="{{ path('commande_recap')}}" ><button  class="primary-btn chechout-btn" type="submit">Valider mon panier</button></a>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+
+
+
 {% endblock %}

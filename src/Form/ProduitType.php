@@ -5,12 +5,11 @@ namespace App\Form;
 use App\Entity\Produit;
 use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Component\Form\AbstractType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProduitType extends AbstractType
 {
@@ -19,7 +18,7 @@ class ProduitType extends AbstractType
         $builder
             ->add('nom')
             ->add('subtitle')
-            ->add('description', CKEditorType::class)
+            ->add('description', TextType::class)
             ->add('prix', MoneyType::class)
             ->remove('slug')
             ->add('categorie')

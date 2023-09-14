@@ -6,19 +6,22 @@ use App\Entity\Carousel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CarouselType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('imageName')
-            ->add('imageSize')
-            ->add('updatedAt')
+            ->add('title')
+            ->add('subtitle')
+            ->add('buttom')
+            ->add('imageFile', FileType::class, ["required"=>false])
+
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Carousel::class,

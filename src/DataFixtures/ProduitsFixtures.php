@@ -17,9 +17,9 @@ class ProduitsFixtures extends Fixture
         $produit->setSubtitle('L\'elegance à porte de main');
         $produit->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elit turpis, ullamcorper ac porttitor at.');
         $produit->setIsBest(1);
-        $produit->setPrix(4395);
+        $produit->setPrix(0050);
         $produit->setSlug('robe-ethnique-pour-femme');
-        $produit->setImageName('taibassse-vert.jpg');
+        $produit->setImageName('produit7.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -32,7 +32,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(5595);
         $produit->setSlug('robe-cleopatra');
-        $produit->setImageName('robe-africaine-robe-africaine-courte.jpg');
+        $produit->setImageName('produit3.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -45,7 +45,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('robe-ample-pour-femme');
-        $produit->setImageName('Robe-Africaine-Ample_400x.jpg');
+        $produit->setImageName('produit7.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -58,7 +58,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('manteau-gris-avec-capuche');
-        $produit->setImageName('manteau-droit-avec-capuche-gris-clair.jpg');
+        $produit->setImageName('produit6.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -71,7 +71,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('robe-crayon-vintage');
-        $produit->setImageName('robe-crayon-vintage-annee-50-4.png');
+        $produit->setImageName('produit8.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -84,7 +84,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('robe-nanawax');
-        $produit->setImageName('nanawax-marque-aimée-africaine.jpg');
+        $produit->setImageName('produit3.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -97,7 +97,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('manteau-coule-outdoor');
-        $produit->setImageName('outdoor-manteau-femme.jpg');
+        $produit->setImageName('produit9.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -110,7 +110,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('manteau-minetom-hiver');
-        $produit->setImageName('minetom-manteau-femme.jpg');
+        $produit->setImageName('produit9.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_FEMME));
@@ -124,7 +124,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(4395);
         $produit->setSlug('manteau-coffeout-homme');
-        $produit->setImageName('coffee.jpg');
+        $produit->setImageName('produit4.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_HOMME));
@@ -137,7 +137,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(6500);
         $produit->setSlug('pantalon-supercent-homme');
-        $produit->setImageName('pantalon-supercent.jpg');
+        $produit->setImageName('produit5.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_HOMME));
@@ -150,7 +150,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('manteau-supercent-homme');
-        $produit->setImageName('01W001851A.jpg');
+        $produit->setImageName('produit1.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_HOMME));
@@ -163,7 +163,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('costume-geovanni-homme');
-        $produit->setImageName('723374_1400_V1.jpg');
+        $produit->setImageName('produit2.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::VETEMENTS_HOMME));
@@ -176,7 +176,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('infusion-kenkiliba');
-        $produit->setImageName('infusion-kenkeliba-40g.jpg');
+        $produit->setImageName('produit11.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::BIEN_ETRE));
@@ -189,7 +189,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('infusion-kenkiliba');
-        $produit->setImageName('khamare_700x700.jpg');
+        $produit->setImageName('produit12.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::BIEN_ETRE));
@@ -202,7 +202,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('bisap-rouge-bio');
-        $produit->setImageName('28595-0w470h470.jpg');
+        $produit->setImageName('produit13.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::BIEN_ETRE));
@@ -216,7 +216,7 @@ class ProduitsFixtures extends Fixture
         $produit->setIsBest(1);
         $produit->setPrix(9999);
         $produit->setSlug('bisap-rouge-bio');
-        $produit->setImageName('28595-0w470h470.jpg');
+        $produit->setImageName('produit13.jpg');
         $produit->setImageSize(50);
         $produit->setUpdatedAt($date);
         $produit->setCategorie($this->getReference(CategorieFixtures::BIEN_ETRE));

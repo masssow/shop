@@ -18,6 +18,9 @@ class CommandeType extends AbstractType
         $builder
             ->add('adresses', EntityType::class, [
                 'label' => 'Votre adresse de livraison:',
+                // 'attr'  => [
+                //     'class' => 'chose-shipping'
+                // ],
                 'required' => true,
                 'class' => Adress::class,
                 'choices' => $user->getAdresses(),
@@ -27,6 +30,9 @@ class CommandeType extends AbstractType
 
             ->add('carriers', EntityType::class, [
                 'label' => 'Transporteur:',
+                // 'attr'  => [
+                //     'class' => 'chose-shipping'
+                // ],
                 'required' => true,
                 'class' => Carrier::class,
                 // 'choices' => $user->getAdresses(),
@@ -36,7 +42,7 @@ class CommandeType extends AbstractType
             ->add('submit', SubmitType::class, [
                'label'=> 'valider commande',
                 'attr' => [
-                   'class' => 'btn btn-success float-end my-3'
+                   'class' => 'primary-btn chechout-btn'
                ] 
                ]);
             

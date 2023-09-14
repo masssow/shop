@@ -49,16 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Nom;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $phone;
@@ -83,10 +73,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Produit::class, inversedBy="users")
+     */
+    private $produitList;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom;
+
     public function __construct()
     {
         $this->adresses = new ArrayCollection();
         $this->commandes = new ArrayCollection();
+        $this->produitList = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getPrenom().$this->getNom();
     }
 
     public function getId(): ?int
@@ -176,30 +187,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->Nom;
-    }
-
-    public function setNom(string $Nom): self
-    {
-        $this->Nom = $Nom;
-
-        return $this;
-    }
-
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
     }
 
     public function getPhone(): ?int
@@ -294,6 +281,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getProduitList(): Collection
+    {
+        return $this->produitList;
+    }
+
+    public function addProduitList(Produit $produitList): self
+    {
+        if (!$this->produitList->contains($produitList)) {
+            $this->produitList[] = $produitList;
+        }
+
+        return $this;
+    }
+
+    public function removeProduitList(Produit $produitList): self
+    {
+        $this->produitList->removeElement($produitList);
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
 
         return $this;
     }

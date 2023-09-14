@@ -30,16 +30,14 @@ class UserFixtures extends Fixture
 
 
         $user = new User();
-        $user->setEmail('admin@admin.com');
         $plainPassword = "pass";
-
         $encodedPassword = $this->encoder->hashPassword($user,$plainPassword); 
         $user->setPassword($encodedPassword);
         $user->setNom('Samba');
         $user->setPrenom('SOW');
         $user->setCountry('France');
         $user->setPhone('000000000');
-        $user->setEmail('samba@sow.com');
+        $user->setEmail('admin1@admin.com');
         $user->setRoles(["ROLE_USER","ROLE_ADMIN"]);// On affecte un role à l'utilisateur
         $user->setIsVerified(1);    
         $manager->persist($user);
@@ -53,7 +51,6 @@ class UserFixtures extends Fixture
         $plainPassword = "pass";
         $user->setRoles(["ROLE_USER"]);// On affecte un role à l'utilisateur
         $user->setPassword($encodedPassword);
-
         $manager->persist($user);
         $manager->flush();
 

@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Search;
+use App\Entity\Produit;
+use App\Form\SearchType;
 use App\Repository\ProduitRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,16 +15,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProduitsController extends AbstractController
 {  
-    
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+        
     #[Route('/nos-produits', name: 'produits')]
 
     public function index(ProduitRepository $produitRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $produits = $produitRepository->findAll();
+        // $produits = $produitRepository->findAll();
+        $produits = $this->entityManager->getRepository(Produit::class)->findAll();
+
         $pagination = $paginator->paginate($produits, $request->query->getInt('page',1),10);
 
+        $search = new Search();
+        $form = $this->createForm(SearchType::class,$search);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $produits = $this->entityManager->getRepository(Produit::class)->findWithFilter($search);
+
+        }
         return $this->render('produits/index.html.twig', [
             'produits' => $pagination,
+            'form'     => $form->createView()
            
         ]);
     }

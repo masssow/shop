@@ -3,12 +3,39 @@
 {% block title %}Safar beauty - Mon compte{% endblock %}
 
 {% block body %}
-<h3 class="my-4">Mon compte</h3>
-Bienvenue <strong>{{ app.user.prenom }}</strong> dans votre compte
+    <h3 class="my-4">Mon compte</h3>
+    Bienvenue <strong>{{ app.user.prenom }}</strong> dans votre compte
     <hr>
+
     - <a href="{{ path('compte_password')}}">Modifier mon mot de passe</a></br>
     - <a href="{{ path('compte_adresse')}}">Gérer mes adresse</a></br>
-    {# - <a href="{{ path('compte_commande')}}">Historiques de commandes</a></br> #}
+{# - <a href="{{ path('compte_commande')}}">Historiques de commandes</a></br> #}
+
+    {% if app.user.produitList|length > 0 %}
+        <div class="row">
+        <h3>Mes Favoris</h3>
+        {% for produit in app.user.produitList %}
+            <div class="col-md-4 " >
+            <div class="produit-item  bordure1">
+                <img src="{{ asset('images/produits/' ~ produit.imageName) }}" alt="{{ produit.Nom }}" class="img-fluid mx-auto d-block">
+                <div class="">
+                    <h5 class="card-title">{{ produit.nom }}</h5>
+                    <p class="card-text">{{ produit.subtitle }}</p>
+                    <div class="produits-prix text-center">{{ (produit.prix / 100)|number_format(2, ',', '.') }} €</div>
+                    <a href="{{ path('add_to_cart', { 'id' : produit.id}) }}" class="btn btn-sm btn-outline-danger mt-2 mb-3 d-flex justify-content-center">
+                    Ajouter au panier
+                    </a>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+        {% else %}
+            <p> Vous n'avez pas de produits favoris</p>
+    {% endif %}
+ </div>
+        
+
 
 
    

@@ -4,50 +4,196 @@
   Safar beauty - Accueil
   
 {% endblock %}
-{% block carousel %}{% endblock %}
 {% block body %}
 
-  <div class="container marketing">
-    <div class="row">
-      {% for produits in produits %}
-
-    <div class="col-lg-4">
-      <div class="produit-item text-center bordure1 ">
-          <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}">
-              <img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}" class="img-fluid">
-          </a>
-              <h6>{{ produits.nom }}</h6>
-              <span class="produits.subtitle">
-                {{ produits.subtitle }}
-              </span>
-                  <span class="produits-prix">
-                  {{ (produits.prix / 100)|number_format(2, ',', '.') }} €
-                  </span>
-            <a href="{{ path('add_to_cart', { 'id' : produits.id}) }}" class="btn btn-outline-danger">
-                Ajouter au panier
-              </a>
+    {# BARRE DE RECHERCHE #}
+    <div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+          {{form_start(form)}}
+        {{form_widget(form)}}
+        {{form_end(form)}}
+          {# <input type="text" id="search-input" placeholder="Search here....."> #}
+			</form>
+		</div>
+	</div>
+        
+         
+{# FIN BARRE DE RECHERCHE #}
+      <!-- Features Box -->
+    <section class="features-section spad">
+        <div class="features-ads">
+        <div class="features-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="single-box-item first-box">
+                                    <img src="{{ asset ('images/box_exem_1.jpg')}}" alt="">
+                                    <div class="box-text">
+                                        <span class="trend-year">2019 Party</span>
+                                        <h2>Bijoux</h2>
+                                        <span class="trend-alert">Trend Allert</span>
+                                        <a href="#" class="primary-btn">See More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="single-box-item second-box">
+                                    <img src="{{ asset ('images/template_box_features2.jpg')}}" alt="">
+                                    <div class="box-text">
+                                        <span class="trend-year">2019 Trend</span>
+                                        <h2>Footwear</h2>
+                                        <span class="trend-alert">Bold & Black</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="single-box-item large-box">
+                            <img src="{{ asset ('images/f-box-3.jpg')}}" alt="">
+                            <div class="box-text">
+                                <span class="trend-year">2019 Party</span>
+                                <h2>Collection</h2>
+                                <div class="trend-alert">Trend Allert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        {% endfor %}
-      </div>
-      
-      <hr class="featurette-divider">
+        </div>
+    </section>
+    <!-- Features Section End -->
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-              Safar beauty  
-              <span class="text-muted">
-                entièrement pour vous
-              </span>
-            </h2>
-            <p class="lead">
-              Fusce gravida elit nec nulla feugiat scelerisque. Nullam pulvinar congue justo, eu sagittis velit euismod nec.
-            </p>
-          </div>
-          <div class="col-md-5">
-            <img src="{{ asset('images/image-event.jpg') }}" alt="" class="img-fluid"></div>
-          </div>
+    <!-- Latest Product Begin -->
+    <section class="latest-products spad">
+        <div class="container">
+            <div class="product-filter">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-title">
+                            <h2>Produits</h2>
+                        </div>
+                        <ul class="product-controls">
+                            <li data-filter="*">Tous</li>
+                            <li data-filter=".dresses">Dresses</li>
+                            <li data-filter=".bags">Bags</li>
+                            <li data-filter=".shoes">Shoes</li>
+                            <li data-filter=".accesories">Accesories</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="product-list">
+                    {% for produits in produits %}
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}"><img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}">
+                              <div class="p-status">new</div>
+                        </figure>
+                              <div class="product-text">
+                              <h6>{{ produits.nom}}</h6>
+                            </a>
+                            <p>{{ (produits.prix / 100)|number_format(2, ',', '.') }} €</p>
+                        </div>
+                    </div>
+                </div>
+                {# <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-2.jpg" alt=""></a>
+                            <div class="p-status sale">sale</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Yellow Maxi Dress</h6>
+                            <p>$25.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-3.jpg" alt=""></a>
+                            <div class="p-status">new</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>One piece bodysuit</h6>
+                            <p>$19.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-4.jpg" alt=""></a>
+                            <div class="p-status popular">popular</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Blue Dress with details</h6>
+                            <p>$35.50</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all dresses shoes">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-5.jpg" alt=""></a>
+                            <div class="p-status">new</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Green Dress with details</h6>
+                            <p>$22.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-6.jpg" alt=""></a>
+                            <div class="p-status sale">sale</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Yellow Maxi Dress</h6>
+                            <p>$25.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-7.jpg" alt=""></a>
+                        </figure>
+                        <div class="product-text">
+                            <h6>One piece bodysuit</h6>
+                            <p>$19.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="img/products/img-8.jpg" alt=""></a>
+                            <div class="p-status popular">popular</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Blue Dress with details</h6>
+                            <p>$35.50</p>
+                        </div>
+                    </div>
+                </div> #}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Latest Product End -->
+
+
+{# 
+  
 
           <hr class="featurette-divider">
 
@@ -84,8 +230,8 @@
                   <div class="col-md-5">
                     <img src="{{ asset('images/pexels-ron-lach-9849636.jpg') }}" alt="" class="img-fluid"></div>
                   </div>
-
                   <hr class="featurette-divider"></div>
+                </div> #}
 
                 {% endblock %}
                 

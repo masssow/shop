@@ -38,15 +38,15 @@ class AdresseController extends AbstractController
     public function add(Cart $cart, Request $request): Response
     {
 
-      $adress = new Adress();
-
+        $adress = new Adress();
         $form = $this->createForm(AdressType::class, $adress);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            // dd($adress);
+    
               $adress->setUser($this->getUser());
+              // dd($adress);
               $this->entityManager->persist($adress);
             //  $entityManager = $this->getDoctrine()->getManager();
         //    $entityManager->persist($adress);

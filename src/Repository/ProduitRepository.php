@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Search;
 use App\Entity\Produit;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Produit|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,20 +25,47 @@ class ProduitRepository extends ServiceEntityRepository
       * @return Produit[] Returns an array of Produit objects
       */
     
-    public function search($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->Where('p.nom LIKE :val')
-            ->setParameter('val',  '%'.$value.'%')
-            // ->orderBy('p.id', 'ASC')
-        // ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    // public function search($value)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->Where('p.nom LIKE :val')
+    //         ->setParameter('val',  '%'.$value.'%')
+    //         // ->orderBy('p.id', 'ASC')
+    //     // ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
     
-     /**
-     * @return Produit[] Returns an array ofLivre objects
+/**
+* @return Produit[] Returns an array produit objects
+*/
+    public function findWithFilter(Search $search)
+    {
+
+        $query = $this
+        ->createQueryBuilder('p')
+        ->select('c', 'p')
+        ->join('p.categorie', 'c');
+
+        if(!empty($search->categories)){
+            $query = $query
+            ->andWhere('p.id IN (:categories)')
+        ->setParameter('categories', $search->categories);
+        }
+
+        if(!empty($search->string)){
+            $query = $query
+            ->andWhere('p.nom LIKE :string')
+        ->setParameter('string', "%{$search->string}%");
+        }
+        
+    
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * @return Produit[] Returns an array of produit objects
      */
     public function searchForPaginator($value){
         return $this->createQueryBuilder('p')
