@@ -47,8 +47,7 @@
                       {% if app.user %}
                     <a href="{{ path ('mon_compte')}}">
                       {{ app.user.prenom }}
-                    </a>
-                    <a href="{{ path ('app_logout') }}">
+                    </a> |                    <a href="{{ path ('app_logout') }}">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </a>
                        {% else %}
@@ -57,30 +56,30 @@
                       {# <i class="fa-regular fa-user"></i> #}
                         <img src="{{ asset ('images/icons/man.png') }}" alt="">
                       </a>
-                      {% endif %}
+                    {% endif %}
                     {# <a href="#">Register</a> #}
                     {# <a href="#" class="in">Sign in</a> #}
                 </div>
                 <nav class="main-menu mobile-menu">
                     <ul>
-                        <li><a class="active" href="./index.html">Home</a></li>
-                        <li><a href="./categories.html">Shop</a>
+                        <li><a class="active" href="{{ path ('home')}}">Accueil</a></li>
+                        <li><a href="{{ path ('categories')}}">Boutique</a>
                             <ul class="sub-menu">
-                                <li><a href="product-page.html">Product Page</a></li>
-                                <li><a href="shopping-cart.html">Shopping Card</a></li>
-                                <li><a href="check-out.html">Check out</a></li>
+                                <li><a href="{{ path ('produits')}}">Nos produits</a></li>
+                                <li><a href="{{ path ('cart')}}">Panier</a></li>
+                                <li><a href="#">Check out</a></li>
                             </ul>
                         </li>
-                        <li><a href="./product-page.html">About</a></li>
-                        <li><a href="./check-out.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="{{ path ('quisomme')}}">A propos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{ path ('contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-      {# NAV BAR #}
-      
+    {# NAV BAR #}
+    
     {# CAROUSEL #}
     {# {% if block('carousel') is defined %}
     
@@ -101,7 +100,7 @@
                     <div class="col-lg-12">
                         <form action="#">
                             <input type="text" placeholder="Your email address">
-                            <button type="submit">Subscribe to our newsletter</button>
+                            <button type="submit">Inscrivez vous à notre newsletter</button>
                         </form>
                     </div>
                 </div>
@@ -115,44 +114,42 @@
                                 <li>About Us</li>
                                 <li>Community</li>
                                 <li>Jobs</li>
-                                <li>Shipping</li>
-                                <li>Contact Us</li>
+                                <li>Expedtion</li>
+                                <li>Nous coctacter</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
-                            <h4>Customer Care</h4>
+                            <h4>Service client</h4>
                             <ul>
-                                <li>Search</li>
-                                <li>Privacy Policy</li>
+                                <li>Recherche</li>
+                                <li>CGU</li>
                                 <li>2019 Lookbook</li>
-                                <li>Shipping & Delivery</li>
-                                <li>Gallery</li>
+                                <li>Galerie</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
-                            <h4>Our Services</h4>
+                            <h4>Nos services</h4>
                             <ul>
-                                <li>Free Shipping</li>
-                                <li>Free Returnes</li>
-                                <li>Our Franchising</li>
-                                <li>Terms and conditions</li>
+                                <li>Expédition gratuite</li>
+                                <li>Retour d'articles</li>
+                                <li>Termes and conditions</li>
                                 <li>Privacy Policy</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
-                            <h4>Information</h4>
+                            <h4>Informations</h4>
                             <ul>
-                                <li>Payment methods</li>
-                                <li>Times and shipping costs</li>
-                                <li>Product Returns</li>
-                                <li>Shipping methods</li>
-                                <li>Conformity of the products</li>
+                                <li>Moyennes de paiement</li>
+                                <li>Délais et frais de transports</li>
+                                <li>Retours de poduits</li>
+                                <li>Types d'expédition</li>
+                                <li>Comformité des produits</li>
                             </ul>
                         </div>
                     </div>
@@ -160,20 +157,20 @@
             </div>
         </div>
         <div class="social-links-warp">
-          <div class="container">
-              <div class="social-links">
+            <div class="container">
+            <div class="social-links">
                 <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
                 <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
                 <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
                 <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
                 <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
                 <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-              </div>
+            </div>
             </div> 
 
             <div class="container text-center pt-5">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="icon-heart color-danger" aria-hidden="true"></i><a href="https://colorlib.com" target="_blank">Lac Rose 2023</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
 

@@ -3,21 +3,30 @@
 {% block title %}Safar beauty - Nos categories{% endblock %}
 
 {% block body %}
+<div class="container">
+        <div class="row">
+                <div class="col-12 col-md-8 d-flex align-self-center">
+                    <h1 class="text-center">{{categorie.Nom}}</h1>
+                    {# <span class="text-center">{{categorie.description|raw}}</span> #}
+                </div>
+        </div>
+        <div class="row" id="product-list">
+                    {% for produits in categorie %}
+                <div class="col-lg-3 col-sm-6 mix">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}"><img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}">
+                                <div class="p-status">new</div>
+                        </figure>
+                                <div class="product-text">
+                                <h6>{{ produits.nom}}</h6>
+                            </a>
+                            <p>{{ (produits.prix / 100)|number_format(2, ',', '.') }} €</p>
+                        </div>
+                </div>
+        </div>
+                {% endfor %}
+</div>
 
-<div class="row">
-<div class="col-12 col-md-4 d-flex justify-content-center mt-2 mb-3">
-<img src="{{ asset('images/categories/' ~ categorie.imageName )}}" alt="{{categorie.nom}}" class="img-fluid mt-3">
-</div>
-<div class="row col-12 col-md-8 d-flex align-self-center">
-<h1 class="text-center">{{categorie.Nom}}</h1>
-{# <span class="text-center">{{ p.description|raw}}</span> #}
-</div>
-<div class="row d-flex justify-content-center">
-{# <span class="produits-prix d-block text-center ">{{ (produit.prix / 100)|number_format(2, ',', '.')}} €</span> #}
-    {# <a href="{{path('add_to_cart', { 'id' : produit.id})}}" class="btn btn-outline-danger col-6">Ajouter au panier</a> #}
-</div>
-</div>
-</div>
-</div>
 
 {% endblock %}

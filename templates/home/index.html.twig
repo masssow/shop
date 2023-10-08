@@ -93,10 +93,10 @@
                     <div class="single-product-item">
                         <figure>
                             <a href="{{ path('produit-detail', { 'slug' : produits.id} ) }}"><img src="{{ asset('images/produits/' ~ produits.imageName) }}" alt="{{ produits.Nom }}">
-                              <div class="p-status">new</div>
+                                <div class="p-status">new</div>
                         </figure>
-                              <div class="product-text">
-                              <h6>{{ produits.nom}}</h6>
+                                <div class="product-text">
+                                <h6>{{ produits.nom}}</h6>
                             </a>
                             <p>{{ (produits.prix / 100)|number_format(2, ',', '.') }} €</p>
                         </div>
@@ -181,7 +181,7 @@
                         </figure>
                         <div class="product-text">
                             <h6>Blue Dress with details</h6>
-                            <p>$35.50</p>
+                            <p>$35.50</p> 
                         </div>
                     </div>
                 </div> #}
@@ -192,46 +192,46 @@
     <!-- Latest Product End -->
 
 
-{# 
-  
+    {# 
+    
 
-          <hr class="featurette-divider">
-
-            <div class="row featurette">
-              <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">
-                  Les partenaires de votre peau 
-                  <span class="text-muted">
-                    Produits de beauté 100% naturels.
-                  </span>
-                </h2>
-                <p class="lead">
-                  Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum..
-                </p>
-              </div>
-              <div class="col-md-5 order-md-1">
-                <img src="{{ asset('images/presentation-beaute.jpg') }}" alt="" class="img-fluid"></div>
-              </div>
-
-              <hr class="featurette-divider">
+            <hr class="featurette-divider">
 
                 <div class="row featurette">
-                  <div class="col-md-7">
+                <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">
-                      rencontrer notre couturière
-                      <span class="text-muted">
-                        Jira
-                      </span>
+                    Les partenaires de votre peau 
+                    <span class="text-muted">
+                        Produits de beauté 100% naturels.
+                    </span>
                     </h2>
                     <p class="lead">
-                      Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum.
+                    Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum..
                     </p>
-                  </div>
-                  <div class="col-md-5">
-                    <img src="{{ asset('images/pexels-ron-lach-9849636.jpg') }}" alt="" class="img-fluid"></div>
-                  </div>
-                  <hr class="featurette-divider"></div>
-                </div> #}
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="{{ asset('images/presentation-beaute.jpg') }}" alt="" class="img-fluid"></div>
+                </div>
+
+                <hr class="featurette-divider">
+
+                    <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">
+                        rencontrer notre couturière
+                        <span class="text-muted">
+                            Jira
+                        </span>
+                        </h2>
+                        <p class="lead">
+                        Proin quis commodo erat, eu iaculis ligula. Pellentesque non elit at neque cursus sagittis. Fusce feugiat laoreet tempus. Morbi nec pulvinar ipsum.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="{{ asset('images/pexels-ron-lach-9849636.jpg') }}" alt="" class="img-fluid"></div>
+                    </div>
+                    <hr class="featurette-divider"></div>
+                    </div> #}
 
                 {% endblock %}
                 
